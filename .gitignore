@@ -1,0 +1,5 @@
+/keys/*
+/pc1/*.pem
+/pc1/__pycache__
+/pc2/*.pem
+/pc2/__pycache__
