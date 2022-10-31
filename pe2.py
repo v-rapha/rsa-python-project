@@ -1,5 +1,18 @@
 import rsa
 
+def generateKeys(public_key_path, private_key_path):
+
+    # pbc_path_exists = os.path.exists(public_key_path)
+    # pvt_path_exists = os.path.exists(private_key_path)
+
+    # if not (pbc_path_exists and pvt_path_exists):
+    (publicKey, privateKey) = rsa.newkeys(2048)
+
+    with open(public_key_path, 'wb') as p:
+        p.write(publicKey.save_pkcs1('PEM'))
+    with open(private_key_path, 'wb') as p:
+        p.write(privateKey.save_pkcs1('PEM'))
+
 
 def loadKeys(public_file_path, private_file_path):
     with open(public_file_path, 'rb') as p:

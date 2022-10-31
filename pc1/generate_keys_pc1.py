@@ -18,12 +18,13 @@ def generateKeys(public_key_path, private_key_path):
 
 
 def main_func():
-    public_file_path = 'pc2/publicKey_pc1.pem'
-    private_file_path = 'pc1/privateKey_pc1.pem'
-    public_file_path_pc2 = 'pc1/publicKey_pc2.pem'
+    # public_file_path = ''
+    # pub_key_path = 'pc2/publicKey_pc1.pem'
+    pvt_key_path = 'pc1/privateKey_pc1.pem'
+    pc2_pub_key_path = 'pc1/publicKey_pc2.pem'
 
-    generateKeys(public_file_path, private_file_path)
-    pbc_key, pvt_key = loadKeys(public_file_path_pc2, private_file_path)
+    # generateKeys(pub_key_path, pvt_key_path)
+    pbc_key, pvt_key = loadKeys(pc2_pub_key_path, pvt_key_path)
 
     print("(1) Criptografar")
     print('(2) Descriptografar')
@@ -35,7 +36,10 @@ def main_func():
             f.write(msg)
     elif op == 2:
         msg = ''
-        with open('msg_pc2.txt', 'rb') as f:
-            msg = decrypt(f.read(), pvt_key)
+        if os.path.exists('msg_pc2.txt'):
+            with open('msg_pc2.txt', 'rb') as f:
+                msg = decrypt(f.read(), pvt_key)
 
-        print(msg)
+            print(msg)
+        else:
+            print('File not found')
