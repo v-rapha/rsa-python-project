@@ -1,7 +1,7 @@
 import os
-from pc1.generate_keys_pc1 import main_func as main_func_pc1
-from pc2.generate_keys_pc2 import main_funcPc2 as main_func_pc2
-from pe2 import generateKeys
+from pc1.index import main_func as main_func_pc1
+from pc2.index import main_funcPc2 as main_func_pc2
+from rsa_functions import generateKeys
 
 
 def main():
@@ -18,8 +18,8 @@ def main():
     if (pc1_pub_key_exists and pc1_pvt_key_exists) and (pc2_pub_key_exists and pc2_pvt_key_exists):
         flag = True
         while flag:
-            print('(1) pc1')
-            print('(2) pc2')
+            print('(1) Acessar como pc1')
+            print('(2) Acessar como pc2')
             op = int(input('Opção: '))
 
             if op == 1:
@@ -31,7 +31,6 @@ def main():
     else:
         generateKeys(pc1_pub_key_path, pc1_pvt_key_path)
         generateKeys(pc2_pub_key_path, pc2_pvt_key_path)
-    
 
 
 if __name__ == "__main__":
